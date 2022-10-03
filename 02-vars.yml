@@ -17,5 +17,14 @@
       ansible.builtin.debug:
         msg: URL = {{URL}}
 
-## variables can be accessed as
+## variables can be accessed as, spaces are not mandatory
 # {{ var_name }} or {{var_name}}
+
+- name: Task level Variables
+  hosts: all
+  tasks:
+    - name: Print URL
+      ansible.builtin.debug:
+        msg: URL = {{ URL }}
+      vars:
+        URL: task.example.com
