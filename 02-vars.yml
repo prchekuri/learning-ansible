@@ -3,7 +3,7 @@
   vars:
     URL: play.example.com
   tasks:
-    - name: print URL
+    - name: print URL from play
       ansible.builtin.debug:
         msg: URL = {{ URL }}
         ##msg: "{{ URL }} is the URL"
@@ -13,7 +13,7 @@
   vars_files:
     - sample-vars.yml
   tasks:
-    - name: print URL
+    - name: print URL from file
       ansible.builtin.debug:
         msg: URL = {{URL}}
 
@@ -23,7 +23,7 @@
 - name: Task level Variables
   hosts: all
   tasks:
-    - name: Print URL
+    - name: Print URL from task
       ansible.builtin.debug:
         msg: URL = {{ URL }}
       vars:
@@ -32,6 +32,12 @@
 - name: Variables from Inventory
   hosts: all
   tasks:
-    - name: Print URL
+    - name: Print URL from inventory
       ansible.builtin.debug:
         msg: URL = {{ URL }}
+
+- name: print Fact
+  hosts: all
+  tasks:
+    - ansible.builtin.debug:
+        msg: Hostname = {{ ansible_hostname }}
