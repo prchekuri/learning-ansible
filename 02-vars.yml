@@ -3,6 +3,19 @@
   vars:
     URL: play.example.com
   tasks:
-    - name: print Hi
+    - name: print URL
       ansible.builtin.debug:
         msg: URL = {{ URL }}
+        ##msg: "{{ URL }} is the URL"
+
+- name: Demo on file variables
+  hosts: all
+  vars_files:
+    - sample-vars.yml
+  tasks:
+    - name: print URL
+      ansible.builtin.debug:
+        msg: URL = {{URL}}
+
+## variables can be accessed as
+# {{ var_name }} or {{var_name}}
